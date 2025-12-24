@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Home</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1.2rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-logo span {
+            color: #3b82f6;
+            margin-left: 2px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+        
+        .nav-link.active {
+            color: #3b82f6;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3b82f6;
+            border-radius: 2px;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #475569;
+            transition: all 0.3s ease;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 2rem 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
+            z-index: -1;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .welcome-badge {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+        
+        .welcome-badge i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+        
+        .hero-title .highlight {
+            color: #3b82f6;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(59, 130, 246, 0.15);
+            z-index: -1;
+            border-radius: 4px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #475569;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-description {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: #64748b;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        /* Profile Image Section */
+        .profile-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .profile-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-image-wrapper:hover .profile-image {
+            transform: scale(1.05);
+        }
+        
+        .profile-frame {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid #3b82f6;
+            border-radius: 2rem;
+            z-index: -1;
+        }
+        
+        .profile-decoration {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-logo span {
+            color: #3b82f6;
+        }
+        
+        .footer-logo p {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+        
+        .footer-links h3,
+        .footer-social h3 {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icons a:hover {
+            background: #3b82f6;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero-container {
+                gap: 3rem;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .profile-image-wrapper {
+                height: 450px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 1.5rem 60px;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .hero-description {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .profile-image-wrapper {
+                height: 400px;
+                max-width: 350px;
+            }
+            
+            /* Mobile Navigation */
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
+                padding: 2rem 0;
+                z-index: 999;
+                gap: 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 1.5rem 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .profile-image-wrapper {
+                height: 350px;
+                max-width: 300px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Portfolio<span>.</span></a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link active">Beranda</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">Tentang</a></li>
+                <li class="nav-item"><a href="experience.html" class="nav-link">Pengalaman</a></li>
+                <li class="nav-item"><a href="project.html" class="nav-link">Proyek</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Kontak</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="welcome-badge">
+                    <i class="fas fa-star"></i> Selamat datang di portofolio saya
+                </div>
+                <h1 class="hero-title">
+                    Hai, saya <span class="highlight">Adi Prasetyo</span>
+                </h1>
+                <h2 class="hero-subtitle">Mahasiswa Ilmu Komputer & Pengembang</h2>
+                <p class="hero-description">
+                    Bersemangat menciptakan solusi yang berdampak dalam Teknologi Kesehatan dan Pembelajaran Mesin. 
+                    Saat ini sedang menempuh tahun terakhir di Ilmu Komputer dengan fokus pada aplikasi AI dalam bidang medis.
+                </p>
+                <div class="hero-buttons">
+                    <a href="project.html" class="btn btn-primary">
+                        <i class="fas fa-code"></i> Lihat Karya Saya
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Hubungi Saya
+                    </a>
+                </div>
+            </div>
+            <div class="profile-container">
+                <div class="profile-image-wrapper">
+                    <img src="assets/images/profile.jpg" alt="Adi Prasetyo - Foto Profil" class="profile-image">
+                </div>
+                <div class="profile-frame"></div>
+                <div class="profile-decoration"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">Portfolio<span>.</span></a>
+                    <p>Situs Web Portofolio Pribadi</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="about.html">Tentang</a></li>
+                        <li><a href="experience.html">Pengalaman</a></li>
+                        <li><a href="project.html">Proyek</a></li>
+                        <li><a href="contact.html">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Terhubung dengan saya</h3>
+                    <div class="social-icons">
+                        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:adi@example.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2023</span> Adi Prasetyo. Hak cipta dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation to profile image on load
+        window.addEventListener('load', () => {
+            const profileImage = document.querySelector('.profile-image-wrapper');
+            profileImage.style.opacity = '0';
+            profileImage.style.transform = 'translateX(20px)';
+            
+            setTimeout(() => {
+                profileImage.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                profileImage.style.opacity = '1';
+                profileImage.style.transform = 'translateX(0)';
+            }, 300);
+        });
+        
+        // Add loading animation for text
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const heroDescription = document.querySelector('.hero-description');
+            
+            // Reset initial state
+            heroTitle.style.opacity = '0';
+            heroTitle.style.transform = 'translateY(20px)';
+            heroSubtitle.style.opacity = '0';
+            heroSubtitle.style.transform = 'translateY(20px)';
+            heroDescription.style.opacity = '0';
+            heroDescription.style.transform = 'translateY(20px)';
+            
+            // Animate in sequence
+            setTimeout(() => {
+                heroTitle.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                heroTitle.style.opacity = '1';
+                heroTitle.style.transform = 'translateY(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                heroSubtitle.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                heroSubtitle.style.opacity = '1';
+                heroSubtitle.style.transform = 'translateY(0)';
+            }, 300);
+            
+            setTimeout(() => {
+                heroDescription.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                heroDescription.style.opacity = '1';
+                heroDescription.style.transform = 'translateY(0)';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

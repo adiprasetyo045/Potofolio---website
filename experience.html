@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Pengalaman</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1.2rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-logo span {
+            color: #3b82f6;
+            margin-left: 2px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+        
+        .nav-link.active {
+            color: #3b82f6;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3b82f6;
+            border-radius: 2px;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #475569;
+            transition: all 0.3s ease;
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 2rem 60px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+        
+        .page-hero .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .page-title {
+            font-size: 3.5rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: #475569;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Container Utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Experience Timeline Section */
+        .experience-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            border-radius: 2px;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 100%;
+            display: flex;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.3s ease;
+            border-top: 4px solid #3b82f6;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 5%;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 5%;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #3b82f6;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -52px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -52px;
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            top: -20px;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-icon {
+            right: auto;
+            left: 2rem;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content h4 {
+            font-size: 1.125rem;
+            color: #3b82f6;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-content > p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .experience-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        
+        .experience-list li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        
+        .experience-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        
+        .experience-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .tag {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            color: #475569;
+            padding: 0.375rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .tag:hover {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-logo span {
+            color: #3b82f6;
+        }
+        
+        .footer-logo p {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+        
+        .footer-links h3,
+        .footer-social h3 {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icons a:hover {
+            background: #3b82f6;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .page-title {
+                font-size: 3rem;
+            }
+            
+            .timeline-content {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 120px 1.5rem 40px;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .experience-section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                margin-bottom: 3rem;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                margin-left: 60px !important;
+                margin-right: 0 !important;
+            }
+            
+            .timeline-content::before {
+                left: -42px !important;
+                right: auto !important;
+            }
+            
+            .timeline-icon {
+                top: -20px;
+                right: 2rem;
+                left: auto !important;
+            }
+            
+            /* Mobile Navigation */
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
+                padding: 2rem 0;
+                z-index: 999;
+                gap: 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 1.5rem 0;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .timeline-content {
+                padding: 1.5rem;
+                margin-left: 50px !important;
+            }
+            
+            .timeline-content::before {
+                left: -36px !important;
+                width: 16px;
+                height: 16px;
+            }
+            
+            .timeline-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1.25rem;
+            }
+            
+            .timeline-content h4 {
+                font-size: 1rem;
+            }
+            
+            .experience-tags {
+                gap: 0.375rem;
+            }
+            
+            .tag {
+                padding: 0.25rem 0.75rem;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Portofolio<span>.</span></a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Beranda</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">Tentang</a></li>
+                <li class="nav-item"><a href="experience.html" class="nav-link active">Pengalaman</a></li>
+                <li class="nav-item"><a href="project.html" class="nav-link">Proyek</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Kontak</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Experience Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">Pengalaman Saya</h1>
+            <p class="page-subtitle">Perjalanan profesional, magang, dan proyek akademik</p>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section class="experience-section">
+        <div class="container">
+            <div class="timeline">
+                <!-- Experience Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jun 2023 - Sekarang</div>
+                        <div class="timeline-icon">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <h3>HealthTech Solutions Inc.</h3>
+                        <h4>Magang Teknik Pembelajaran Mesin</h4>
+                        <p>Mengembangkan dan menerapkan model pembelajaran mesin untuk deteksi dini retinopati diabetik dari gambar retina, mencapai akurasi 92%.</p>
+                        <ul class="experience-list">
+                            <li>Membangun model CNN menggunakan TensorFlow untuk klasifikasi gambar medis</li>
+                            <li>Mengoptimalkan performa model melalui penyesuaian hiperparameter dan augmentasi data</li>
+                            <li>Membuat pipeline data untuk pra-pemrosesan dataset pencitraan medis</li>
+                            <li>Berkolaborasi dengan profesional kesehatan untuk memvalidasi hasil model</li>
+                        </ul>
+                        <div class="experience-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">OpenCV</span>
+                            <span class="tag">Pencitraan Medis</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jan 2023 - Mei 2023</div>
+                        <div class="timeline-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Universitas Stanford - Lab Penelitian AI</h3>
+                        <h4>Asisten Penelitian Sarjana</h4>
+                        <p>Berkontribusi pada penelitian tentang aplikasi NLP untuk penilaian kesehatan mental menggunakan data media sosial.</p>
+                        <ul class="experience-list">
+                            <li>Mengembangkan model analisis sentimen untuk mendeteksi indikator depresi dalam teks</li>
+                            <li>Mengumpulkan dan memproses dataset dari API media sosial</li>
+                            <li>Membantu menulis makalah penelitian yang diajukan ke "Journal of Medical Internet Research"</li>
+                            <li>Mempresentasikan temuan di Simposium Penelitian Sarjana Stanford</li>
+                        </ul>
+                        <div class="experience-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">BERT</span>
+                            <span class="tag">Penelitian</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Mei 2022 - Agu 2022</div>
+                        <div class="timeline-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>MedData Analytics</h3>
+                        <h4>Magang Ilmu Data</h4>
+                        <p>Bekerja pada proyek analitik prediktif untuk tingkat rawat ulang rumah sakit menggunakan data EHR pasien.</p>
+                        <ul class="experience-list">
+                            <li>Membangun model prediktif menggunakan Scikit-learn untuk mengidentifikasi pasien berisiko tinggi</li>
+                            <li>Membersihkan dan memproses dataset EHR skala besar (100k+ catatan)</li>
+                            <li>Membuat dashboard interaktif menggunakan Tableau untuk administrator rumah sakit</li>
+                            <li>Mengurangi tingkat rawat ulang yang diprediksi sebesar 15% melalui optimasi model</li>
+                        </ul>
+                        <div class="experience-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Tableau</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Sep 2021 - Apr 2022</div>
+                        <div class="timeline-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Perhimpunan Ilmu Komputer Stanford</h3>
+                        <h4>Wakil Presiden & Pemimpin Pengembangan Web</h4>
+                        <p>Memimpin inisiatif pengembangan web dan mengorganisir acara teknologi untuk 500+ anggota mahasiswa.</p>
+                        <ul class="experience-list">
+                            <li>Mendesain ulang dan mengembangkan situs web perhimpunan menggunakan HTML, CSS, JavaScript</li>
+                            <li>Mengorganisir 12+ workshop tentang pengembangan web, pembelajaran mesin, dan persiapan karir</li>
+                            <li>Membimbing 20+ mahasiswa dalam proyek pengembangan web</li>
+                            <li>Mengkoordinasikan hackathon tahunan dengan 150+ peserta</li>
+                        </ul>
+                        <div class="experience-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Kepemimpinan</span>
+                            <span class="tag">Perencanaan Acara</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jun 2021 - Agu 2021</div>
+                        <div class="timeline-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Inisiatif Code4Health</h3>
+                        <h4>Relawan Pengembang Web</h4>
+                        <p>Mengembangkan situs web informasi kesehatan untuk komunitas pedesaan dalam kolaborasi dengan organisasi nirlaba.</p>
+                        <ul class="experience-list">
+                            <li>Membangun situs web responsif yang menyediakan informasi kesehatan untuk komunitas kurang terlayani</li>
+                            <li>Menerapkan dukungan multibahasa untuk pengguna berbahasa Spanyol</li>
+                            <li>Mengintegrasikan sistem penjadwalan janji temu untuk klinik lokal</li>
+                            <li>Situs web melayani 5,000+ pengguna bulanan dalam 3 bulan pertama</li>
+                        </ul>
+                        <div class="experience-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Flask</span>
+                            <span class="tag">Desain Responsif</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">Portofolio<span>.</span></a>
+                    <p>Situs Web Portofolio Pribadi</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="about.html">Tentang</a></li>
+                        <li><a href="experience.html">Pengalaman</a></li>
+                        <li><a href="project.html">Proyek</a></li>
+                        <li><a href="contact.html">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Terhubung dengan saya</h3>
+                    <div class="social-icons">
+                        <a href="https://github.com/adiprasetyo045" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/adiprasetyo" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:prasetyaadhi398@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://wa.me/6285234641311" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2023</span> Adi Prasetyo. Hak cipta dilindungi undang-undang.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+        
+        // Animate timeline items when they come into view
+        const timelineItems = document.querySelectorAll('.timeline-content');
+        
+        const animateTimelineItems = () => {
+            timelineItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                const isVisible = (rect.top <= window.innerHeight - 100) && (rect.bottom >= 0);
+                
+                if (isVisible) {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for timeline items
+        timelineItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        // Initial animation
+        setTimeout(animateTimelineItems, 300);
+        
+        // Animate on scroll
+        window.addEventListener('scroll', animateTimelineItems);
+        
+        // Add animation to tags on hover
+        const tags = document.querySelectorAll('.tag');
+        tags.forEach(tag => {
+            tag.addEventListener('mouseenter', () => {
+                tag.style.transform = 'translateY(-2px)';
+            });
+            
+            tag.addEventListener('mouseleave', () => {
+                tag.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

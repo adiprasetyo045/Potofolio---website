@@ -1,0 +1,245 @@
+/* ===========================================
+   RESPONSIVE STYLES
+   Media queries for mobile and tablet devices
+   =========================================== */
+
+/* Large Tablets and Small Laptops */
+@media screen and (max-width: 1024px) {
+    .hero-content,
+    .about-grid,
+    .contact-grid {
+        gap: 3rem;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    h1 {
+        font-size: 2.75rem;
+    }
+    
+    h2 {
+        font-size: 2.25rem;
+    }
+}
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+    /* Navigation */
+    .hamburger {
+        display: block;
+    }
+    
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow-lg);
+        padding: 2rem 0;
+        z-index: 999;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-item {
+        margin: 1rem 0;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 6rem 1.5rem 4rem;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .image-wrapper {
+        width: 300px;
+        height: 300px;
+    }
+    
+    /* About Page */
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+    
+    .about-image .image-wrapper {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        text-align: left;
+    }
+    
+    /* Contact Page */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    /* Projects Grid */
+    .projects-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    /* Footer */
+    .footer-content {
+        gap: 2rem;
+    }
+}
+
+/* Mobile Phones */
+@media screen and (max-width: 480px) {
+    /* General */
+    .container {
+        padding: 0 1rem;
+    }
+    
+    h1 {
+        font-size: 2.25rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    .section-title::after {
+        width: 40px;
+    }
+    
+    /* Hero */
+    .hero {
+        padding: 5rem 1rem 3rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .image-wrapper {
+        width: 250px;
+        height: 250px;
+    }
+    
+    /* Page Hero */
+    .page-hero {
+        padding: 6rem 1rem 3rem;
+    }
+    
+    .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    /* Quick Links */
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Skills */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Projects */
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-buttons {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+    
+    .filter-btn {
+        white-space: nowrap;
+    }
+    
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+/* Small Mobile Phones */
+@media screen and (max-width: 360px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .image-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-links {
+        flex-direction: column;
+    }
+}
